@@ -1,0 +1,15 @@
+#Class Person
+#Created 11/7/2014
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+        self.previous_group_members = []
+
+    def has_been_in_group_with(self, other_person):
+        if other_person in self.previous_group_members:
+            return True
+
+        return False
+
+    def serialize(self):
