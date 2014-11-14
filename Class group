@@ -1,0 +1,27 @@
+# Denis, Sathtra, Seth, 
+
+class Group:
+
+
+    def __init__(self, stringGroups, numGroups):
+
+         self.stringGroups=stringGroups
+         self.numGroups=numGroups
+
+
+    def groupSeperator:
+        int x = 1
+        int y = 0
+        int index = 0
+        
+        while (x <= numGroups):
+            print('___ Group',x,'___')
+            while ((y+1) <= groupSize):
+                print self.allGroup[index]
+                print('\n')
+                y += 1
+                index += 1
+            print('\n')
+            x += 1
+            y = 0 
+        
