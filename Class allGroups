@@ -1,0 +1,20 @@
+# Denis, Sathtra, Seth, 
+class allGroups:
+#    int x = 1
+#    int y = 0
+    
+    def __init__(self, allGroups):
+        self.allGroups = allGroups
+
+#        while (x <= numGroups):
+#            print('___ Group',x,'___')
+#            while ((y+1) <= groupSize):
+#                print self.allGroup[y]
+#                print('\n')
+#                y += 1
+#            print('\n')
+#            x += 1
+        
+        stringGroups = self.allGroups.strip('[]')
+
+        return stringGroups
