@@ -53,3 +53,58 @@ def main():
         
 
 main()
+#################################################################################################################
+# Modefied the code by Denis to allow the user to input number of students and group size
+#################################################################################################################
+def allCombo(num, length):
+    #if not j == -1:
+        #print(j)
+        # for b in range(length):
+            # print( allList[j][b], end=' ')
+        # print()
+    allList = []
+    cont = True
+    
+    while cont:
+        if len(allList) == 0: #starts the list
+            allList.append(list(range(1,length + 1)))
+            #allCombo(num, allList, length, length-1, 0)
+            i = length - 1
+            j = 0
+        elif i == -1: #end of loop
+            cont = False
+        else:
+            if allList[j][i] >= num - length + 1 + i: #this number has counted all the way
+                #allCombo(num, allList, length ,i-1 ,j) #move to next
+                i -= 1
+            else:
+                temp = [] + allList[j]
+                temp[i] += 1
+                for a in range(i+1, length):
+                    temp[a] = temp[a-1] + 1
+                    
+                allList.append(temp)
+                #allCombo(num, allList, length ,length-1 ,j+1)
+                i = length - 1
+                j += 1
+    return allList
+
+def allcombo3(num): #first attempt, only groupsize three
+    list1 = []
+    for i in range(1,num+1):
+        for j in range(i+1,num+1):
+            for k in range(j+1,num+1):
+                list1.append([i,j,k])
+                
+    for i in range(len(list1)-1):
+        print(list1[i])
+        
+def main():
+    classSize = eval(input('Enter class size: '))
+    groupSize = eval(input('Enter group size: '))
+    a = allCombo(classSize,groupSize)
+    for i in range(len(a)):
+        for j in range(len(a[i])):
+            print(a[i][j], end=' ')
+        print()
+main()
