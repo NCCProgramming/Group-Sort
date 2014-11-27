@@ -1,0 +1,134 @@
+#So ive been working on the basic outline of the student names inputed into the text files and 
+#then retrieving those names and storing them in a list within the program. I cannot figure out 
+#how to store an array in the text document so  help is very much apreciated.
+#
+#The problem im having is that when the names are stored the text file, they need to be also stored 
+#with \n, but when you read the names line by line from the text file it also grabs that \n when
+#placing it in the array within the program list variable.
+#I dont know how to retace and delete those pesky \n after every single name. In C I could just 
+#grab the string in the array[index] and rewrite it letter by letter and stop writing as it sees \n
+#but I dont know how to do so in python.
+#
+#This is just the basic layout... Needs a lot of work to be efficient
+#Yes I reused many variable names within the seperate functions 
+
+
+def main():
+    print("Welcome")
+    print("Please select one of the folowing")
+    print("a: Enter student names(s)        b: Delete student name(s)")
+    print("c: Create random groups          q: Quit\n")
+
+    choice = input('Choice: ')
+    while (choice != "d"):
+        if (choice == "a"):
+            studentNames = getStudentNames()
+            choice = "f"
+        elif (choice == "b"):
+            names = readNamesFromList()
+            choice = "f"
+        elif (choice == "c"):
+            print("not yet started")
+            choice = "f"
+        elif (choice == "q"):
+            return 0
+        elif (choice == "f"):
+            print("Please select one of the folowing")
+            print("a: Enter student names(s)        b: Delete student name(s)")
+            print("c: Create random groups          q: Quit\n")
+
+            choice = input('Coice: ')
+        else:
+            print("Invalid Coice")
+            print("Please select one of the folowing")
+            print("a: Enter student names(s)        b: Delete student name(s)")
+            print("c: Create random groups          q: Quit\n")
+
+            choice = input('Coice: ')
+
+
+def getStudentNames():
+    #automatically create a new text file named studentNames.txt in the folder
+    #where this file is located as WRITE ONLY
+    file = open("studentNames.txt","w")
+
+    #create empty list
+    students = []
+
+    #variable to store input in
+    print("Enter student name (0 to quit)")
+    print("Example: Jacob J")
+    print("Example: Devin K")
+    j = input(': ')
+    while (j != '0'):
+        #append the list with an added name
+        students.append(j)
+        j = input(': ')
+
+    length = len(students)
+    index = 0
+    
+    while (index < length):
+        studentName = students[index]
+        file.write(studentName+' \n')
+        index += 1
+        
+    # set the last value as a special character w/o "\n"
+    file.write('*')
+    #close the opened file
+    file.close()
+
+    return students
+###############################################################################################################
+# The problem is here
+###############################################################################################################
+def readNamesFromList():
+    studentsList = []
+    index = 0
+
+    #open file as READ only
+    with open('studentNames.txt','r') as file:
+        #read line by line
+        data = file.readline()
+        
+        while (data != "*"):# * simpolizes end of file
+            if (data == " \n"):
+                data = file.readline()
+            studentsList.append(data)
+            data = file.readline()
+
+        #try to remove ALL \n from the list stored in studentsList[]
+        #while '\n' in studentsList:
+        #    studentsList.remove('\n')
+            
+        #length = len(studentsList)
+        #while (index < length):
+        #    name = studentsList[index]
+        #    while "\n" in name:
+        #        name.remove("\n")
+        #        #rewrite the name back in its location w/o the '\n' this time
+        #        studentsList[i] = name
+        #    index += 1
+            
+    print(studentsList)
+    #close the opened file
+    file.close()
+    return studentsList
+###############################################################################################################
+#Still working on this, need above code solved first
+###############################################################################################################
+def deleteName(students):
+    print('Enter student name you wish to delete (0 to quit)')
+    print('Example: John K')
+    print('Example: Devin B')
+    name = input(": ")
+    while (name != "0"):
+        if (name in students):
+            students.remove(name)
+            print(name,"Removed")
+        elif (name != students):
+            print("Name is not in the list")
+    return names
+    
+main()
+
