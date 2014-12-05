@@ -91,12 +91,16 @@ def readNamesFromList():
         #read line by line
         data = file.readline()
         
-        while (data != "*"):# * simpolizes end of file
+        while (data != "*"):# * simbolizes end of file
             if (data == " \n"):
                 data = file.readline()
             studentsList.append(data)
             data = file.readline()
-
+        
+        #Remove whitespace from Names
+        for x in range(0,len(studentsList)):
+            studentsList[x] = studentsList[x].strip()
+            
         #try to remove ALL \n from the list stored in studentsList[]
         #while '\n' in studentsList:
         #    studentsList.remove('\n')
