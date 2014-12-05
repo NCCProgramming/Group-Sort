@@ -1,16 +1,4 @@
-#So ive been working on the basic outline of the student names inputed into the text files and 
-#then retrieving those names and storing them in a list within the program. I cannot figure out 
-#how to store an array in the text document so  help is very much apreciated.
-#
-#The problem im having is that when the names are stored the text file, they need to be also stored 
-#with \n, but when you read the names line by line from the text file it also grabs that \n when
-#placing it in the array within the program list variable.
-#I dont know how to retace and delete those pesky \n after every single name. In C I could just 
-#grab the string in the array[index] and rewrite it letter by letter and stop writing as it sees \n
-#but I dont know how to do so in python.
-#
-#This is just the basic layout... Needs a lot of work to be efficient
-#Yes I reused many variable names within the seperate functions 
+# This is a sample/outline of what the general idea of the program is going to be
 
 
 def main():
@@ -55,10 +43,11 @@ def getStudentNames():
     #create empty list
     students = []
 
-    #variable to store input in
     print("Enter student name (0 to quit)")
     print("Example: Jacob J")
     print("Example: Devin K")
+    
+    #variable to store input in
     j = input(': ')
     while (j != '0'):
         #append the list with an added name
@@ -80,7 +69,9 @@ def getStudentNames():
 
     return students
 ###############################################################################################################
-# The problem is here
+# get student names from the list
+# store the names in the array
+# remove the whitespace from the names (front and back only)
 ###############################################################################################################
 def readNamesFromList():
     studentsList = []
@@ -119,7 +110,7 @@ def readNamesFromList():
     file.close()
     return studentsList
 ###############################################################################################################
-#Still working on this, need above code solved first
+#Work in progress
 ###############################################################################################################
 def deleteName(students):
     print('Enter student name you wish to delete (0 to quit)')
