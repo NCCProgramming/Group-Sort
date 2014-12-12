@@ -1,0 +1,77 @@
+PS you forgot your PYTHON book, Ill bring it in on Wednesday for our final, let me know if you need it earlier than that. Denis
+
+
+def allCombo(num, length):
+    #if not j == -1:
+        #print(j)
+        # for b in range(length):
+            # print( allList[j][b], end=' ')
+        # print()
+    allList = []
+    cont = True
+    
+    while cont:
+        if len(allList) == 0: #starts the list
+            allList.append(list(range(1,length + 1)))
+            #allCombo(num, allList, length, length-1, 0)
+            i = length - 1
+            j = 0
+        elif i == -1: #end of loop
+            cont = False
+        else:
+            if allList[j][i] >= num - length + 1 + i: #this number has counted all the way
+                #allCombo(num, allList, length ,i-1 ,j) #move to next
+                i -= 1
+            else:
+                temp = [] + allList[j]
+                temp[i] += 1
+                for a in range(i+1, length):
+                    temp[a] = temp[a-1] + 1
+                    
+                allList.append(temp)
+                #allCombo(num, allList, length ,length-1 ,j+1)
+                i = length - 1
+                j += 1
+    return allList
+
+def genCombo(LON,SOG):
+    #LON = length of names
+    #SOG = size of group
+
+    if not LON % SOG == 0:
+        num = LON + (SOG - LON % SOG)
+    else:
+        num = LON
+        
+    AC = allCombo(num,SOG)
+    ACcopy = [x for x in AC]
+    print (AC)
+    print()
+
+    dummy = 0
+    for x in AC:
+        dummy = 0
+        for y in x:
+            if (y > LON):
+                #print (y >LON)
+                dummy += 1
+        if (dummy > 1):
+            print(x)
+            AC.insert(AC.index(x), "DELETED")
+            AC.remove(x)
+            x = [0,0,0]
+            dummy = 0
+
+    print(AC)
+    #for i in ACcopy:
+    #    if i not in AC:
+    #        print(i)
+            
+    print()
+    #for x in AC:
+    #    print(x)
+    print()
+
+
+#(Number of Students,Size of Groups)
+genCombo(4,3)
